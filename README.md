@@ -30,7 +30,7 @@ OpenFinality operates on a sophisticated Hyperledger Fabric architecture combini
 
 ```mermaid
 graph TD
-    subgraph OpenFinality Network [OpenFinality Permissioned Ledger]
+    subgraph OpenFinality_Network [OpenFinality Permissioned Ledger]
         O[SmartBFT Ordering Service <br> 4 Nodes, f=1 Tolerance]
         
         subgraph NigeriaOrg
@@ -65,7 +65,7 @@ graph TD
     end
 
     classDef network fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    class OpenFinality Network network;
+    class OpenFinality_Network network;
 ```
 
 ### Key Technical Innovations
