@@ -11,7 +11,7 @@ for file in README.md ROADMAP.md SECURITY.md ARCHITECTURE.md GOVERNANCE.md CONTR
 done
 
 echo "Checking for tracked private keys..."
-if git grep -q -e "-----BEGIN PRIVATE KEY-----"; then
+if git grep -q -e "-----BEGIN PRIVATE KEY-----" -- ':!tools/verify-repo.sh'; then
     echo "Found tracked private key!"
     exit 1
 fi
