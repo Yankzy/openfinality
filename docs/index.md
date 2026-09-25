@@ -1,1 +1,1 @@
-# Afro-Rail Documentation
+# OpenFinality Documentation

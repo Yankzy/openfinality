@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/afro-rail/afro-rail/chaincode/afrorail/domain"
-	"github.com/afro-rail/afro-rail/internal/settlement"
+	"github.com/openfinality/openfinality/chaincode/afrorail/domain"
+	"github.com/openfinality/openfinality/internal/settlement"
 )
 
 // SimulatorAdapter implements a deterministic external settlement simulator.

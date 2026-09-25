@@ -30,5 +30,5 @@ if [ ! -f "protocol/openapi/openapi.yaml" ]; then
     exit 1
 fi
 
-echo "Verification complete. Afro-Rail repo is clean."
+echo "Verification complete. OpenFinality repo is clean."
 exit 0

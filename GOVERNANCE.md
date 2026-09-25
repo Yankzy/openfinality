@@ -1,3 +1,3 @@
 # Governance
 
-Afro-Rail uses an open governance model.
+OpenFinality uses an open governance model.

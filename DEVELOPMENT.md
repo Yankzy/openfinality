@@ -1,3 +1,3 @@
 # Development
 
-How to build, run, and test Afro-Rail locally.
+How to build, run, and test OpenFinality locally.

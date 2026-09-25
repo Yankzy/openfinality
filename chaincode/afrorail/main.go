@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
-	"github.com/afro-rail/afro-rail/chaincode/afrorail/contract"
+	"github.com/openfinality/openfinality/chaincode/afrorail/contract"
 )
 
 func main() {
@@ -12,10 +12,10 @@ func main() {
 
 	chaincode, err := contractapi.NewChaincode(smartContract)
 	if err != nil {
-		log.Panicf("Error creating Afro-Rail chaincode: %v", err)
+		log.Panicf("Error creating OpenFinality chaincode: %v", err)
 	}
 
 	if err := chaincode.Start(); err != nil {
-		log.Panicf("Error starting Afro-Rail chaincode: %v", err)
+		log.Panicf("Error starting OpenFinality chaincode: %v", err)
 	}
 }

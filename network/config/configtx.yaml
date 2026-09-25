@@ -1,1 +1,198 @@
-# Fabric configtx
+Organizations:
+  - &OrdererOrg
+    Name: OrdererOrg
+    ID: OrdererMSP
+    MSPDir: ../organizations/orderer/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrdererMSP.admin')"
+    OrdererEndpoints:
+      - "orderer1.ordererorg.openfinality.com:7050"
+      - "orderer2.ordererorg.openfinality.com:8050"
+      - "orderer3.ordererorg.openfinality.com:9050"
+      - "orderer4.ordererorg.openfinality.com:10050"
+
+  - &NigeriaOrg
+    Name: NigeriaOrg
+    ID: NigeriaMSP
+    MSPDir: ../organizations/nigeria/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('NigeriaMSP.admin', 'NigeriaMSP.peer', 'NigeriaMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('NigeriaMSP.admin', 'NigeriaMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('NigeriaMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('NigeriaMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.nigeriaorg.openfinality.com
+        Port: 7051
+
+  - &GhanaOrg
+    Name: GhanaOrg
+    ID: GhanaMSP
+    MSPDir: ../organizations/ghana/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('GhanaMSP.admin', 'GhanaMSP.peer', 'GhanaMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('GhanaMSP.admin', 'GhanaMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('GhanaMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('GhanaMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.ghanaorg.openfinality.com
+        Port: 9051
+
+  - &MoroccoOrg
+    Name: MoroccoOrg
+    ID: MoroccoMSP
+    MSPDir: ../organizations/morocco/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('MoroccoMSP.admin', 'MoroccoMSP.peer', 'MoroccoMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('MoroccoMSP.admin', 'MoroccoMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('MoroccoMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('MoroccoMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.moroccoorg.openfinality.com
+        Port: 11051
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V3_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_5: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: BFT
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 100
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+
+  ConsenterMapping:
+    - ID: 1
+      Host: orderer1.ordererorg.openfinality.com
+      Port: 7050
+      MSPID: OrdererMSP
+      ClientTLSCert: ../organizations/orderer/orderers/orderer1/tls/server.crt
+      ServerTLSCert: ../organizations/orderer/orderers/orderer1/tls/server.crt
+      Identity: ../organizations/orderer/orderers/orderer1/msp/signcerts/cert.pem
+    - ID: 2
+      Host: orderer2.ordererorg.openfinality.com
+      Port: 8050
+      MSPID: OrdererMSP
+      ClientTLSCert: ../organizations/orderer/orderers/orderer2/tls/server.crt
+      ServerTLSCert: ../organizations/orderer/orderers/orderer2/tls/server.crt
+      Identity: ../organizations/orderer/orderers/orderer2/msp/signcerts/cert.pem
+    - ID: 3
+      Host: orderer3.ordererorg.openfinality.com
+      Port: 9050
+      MSPID: OrdererMSP
+      ClientTLSCert: ../organizations/orderer/orderers/orderer3/tls/server.crt
+      ServerTLSCert: ../organizations/orderer/orderers/orderer3/tls/server.crt
+      Identity: ../organizations/orderer/orderers/orderer3/msp/signcerts/cert.pem
+    - ID: 4
+      Host: orderer4.ordererorg.openfinality.com
+      Port: 10050
+      MSPID: OrdererMSP
+      ClientTLSCert: ../organizations/orderer/orderers/orderer4/tls/server.crt
+      ServerTLSCert: ../organizations/orderer/orderers/orderer4/tls/server.crt
+      Identity: ../organizations/orderer/orderers/orderer4/msp/signcerts/cert.pem
+
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  AfroSettlementChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrg
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *NigeriaOrg
+        - *GhanaOrg
+        - *MoroccoOrg
+      Capabilities:
+        <<: *ApplicationCapabilities

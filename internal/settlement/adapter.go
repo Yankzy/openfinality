@@ -3,7 +3,7 @@ package settlement
 import (
 	"context"
 
-	"github.com/afro-rail/afro-rail/chaincode/afrorail/domain"
+	"github.com/openfinality/openfinality/chaincode/afrorail/domain"
 )
 
 type ReserveRequest struct {

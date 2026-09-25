@@ -1,3 +1,3 @@
 # Architecture
 
-Detailed architecture documentation for Afro-Rail.
+Detailed architecture documentation for OpenFinality.

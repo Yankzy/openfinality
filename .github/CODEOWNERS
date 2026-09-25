@@ -1,1 +1,5 @@
-* @afro-rail/core
+# All files are owned by user @Yankzy by default
+*       @Yankzy
+
+# Any files in the /docs folder are owned by @another-user
+/docs/  @Yankzy

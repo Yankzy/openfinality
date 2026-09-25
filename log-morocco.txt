@@ -1,0 +1,2 @@
+Installed chaincodes on peer:
+Package ID: afrorail_1.0:785dd3124786c7535e18c32f77080dd919267b84687e18eebab54ca13a96c39f, Label: afrorail_1.0

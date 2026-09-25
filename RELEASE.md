@@ -1,3 +1,3 @@
 # Release Process
 
-Steps for releasing new versions of Afro-Rail.
+Steps for releasing new versions of OpenFinality.

@@ -21,7 +21,7 @@ const (
 	ParticipantStatusRevoked   ParticipantStatus = "REVOKED"
 )
 
-// Participant represents an institutional participant in the Afro-Rail network.
+// Participant represents an institutional participant in the OpenFinality network.
 type Participant struct {
 	ID           string            `json:"id"`
 	MSPID        string            `json:"msp_id"`

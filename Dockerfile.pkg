@@ -1,0 +1,2 @@
+FROM golang:1.22-bullseye
+COPY --from=hyperledger/fabric-peer:3.1.5 /usr/local/bin/peer /usr/local/bin/peer

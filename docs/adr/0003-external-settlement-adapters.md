@@ -2,7 +2,7 @@
 
 **Status:** Accepted
 
-**Context:** Afro-Rail coordinates settlement but does not itself issue or move sovereign fiat currency directly within its chaincode.
+**Context:** OpenFinality coordinates settlement but does not itself issue or move sovereign fiat currency directly within its chaincode.
 
 **Decision:** Use external settlement adapters to interact with existing real-world payment rails, RTGS systems, APIs, or mobile money operators.
 

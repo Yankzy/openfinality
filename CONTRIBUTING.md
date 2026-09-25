@@ -1,3 +1,3 @@
 # Contributing
 
-Guidelines for contributing to Afro-Rail.
+Guidelines for contributing to OpenFinality.

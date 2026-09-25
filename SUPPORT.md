@@ -1,3 +1,3 @@
 # Support
 
-Where to get help with Afro-Rail.
+Where to get help with OpenFinality.

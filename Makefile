@@ -1,7 +1,7 @@
 .PHONY: bootstrap up down clean build lint test test-race test-integration test-e2e test-adversarial deploy-chaincode network-status demo demo-bft-failure verify
 
 bootstrap:
-	@echo "Bootstrapping Afro-Rail environment..."
+	@echo "Bootstrapping OpenFinality environment..."
 	@bash network/scripts/bootstrap.sh
 
 up:
@@ -50,7 +50,7 @@ test-adversarial:
 	@echo "Adversarial tests passed."
 
 deploy-chaincode:
-	@echo "Deploying Afro-Rail chaincode..."
+	@echo "Deploying OpenFinality chaincode..."
 	@bash network/scripts/deploy-chaincode.sh
 
 network-status:
@@ -67,11 +67,17 @@ demo:
 demo-bft-failure:
 	@echo "Starting network..."
 	@echo "Stopping one orderer..."
+	@docker stop orderer4.ordererorg.openfinality.com
 	@echo "Submitting settlement operations..."
-	@echo "Committing transactions..."
+	@bash demo/run-demo.sh
 	@echo "Settlement remains available."
 	@echo "Restarting orderer..."
+	@docker start orderer4.ordererorg.openfinality.com
 
-verify: build lint test
+test-release-gate:
+	@echo "Running release gate tests..."
+	@bash demo/test-release-gate.sh
+
+verify: build lint test test-release-gate
 	@echo "Verifying repository..."
 	@bash tools/verify-repo.sh

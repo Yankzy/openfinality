@@ -20,12 +20,14 @@ const (
 	SettlementStatusCancelled SettlementStatus = "CANCELLED"
 )
 
-// SettlementIntent represents the canonical request submitted to Afro-Rail.
+// SettlementIntent represents the canonical request submitted to OpenFinality.
 type SettlementIntent struct {
 	ID                  string           `json:"id"`
-	InitiatorID         string           `json:"initiator_id"`
-	CounterpartyID      string           `json:"counterparty_id"`
-	SourceCurrency      string           `json:"source_currency"`
+	InitiatorParticipantID    string           `json:"initiator_participant_id"`
+	InitiatorMSPID            string           `json:"initiator_mspid"`
+	CounterpartyParticipantID string           `json:"counterparty_participant_id"`
+	CounterpartyMSPID         string           `json:"counterparty_mspid"`
+	SourceCurrency            string           `json:"source_currency"`
 	DestinationCurrency string           `json:"destination_currency"`
 	SourceAmount        Amount           `json:"source_amount"`
 	DestinationAmount   Amount           `json:"destination_amount"`

@@ -1,0 +1,43 @@
+version: '3.7'
+
+networks:
+  afro_network:
+    name: afro_network
+    external: true
+
+services:
+  peer0.nigeriaorg.openfinality.com-ccaas:
+    container_name: peer0.nigeriaorg.openfinality.com-ccaas
+    image: afrorail-chaincode:latest
+    networks:
+      - afro_network
+    environment:
+      - CHAINCODE_SERVER_ADDRESS=0.0.0.0:9999
+      - CHAINCODE_ID=${CC_PACKAGE_ID_NIGERIA}
+      - CORE_CHAINCODE_ID_NAME=${CC_PACKAGE_ID_NIGERIA}
+    ports:
+      - "9999:9999"
+
+  peer0.ghanaorg.openfinality.com-ccaas:
+    container_name: peer0.ghanaorg.openfinality.com-ccaas
+    image: afrorail-chaincode:latest
+    networks:
+      - afro_network
+    environment:
+      - CHAINCODE_SERVER_ADDRESS=0.0.0.0:9999
+      - CHAINCODE_ID=${CC_PACKAGE_ID_GHANA}
+      - CORE_CHAINCODE_ID_NAME=${CC_PACKAGE_ID_GHANA}
+    ports:
+      - "9998:9999"
+
+  peer0.moroccoorg.openfinality.com-ccaas:
+    container_name: peer0.moroccoorg.openfinality.com-ccaas
+    image: afrorail-chaincode:latest
+    networks:
+      - afro_network
+    environment:
+      - CHAINCODE_SERVER_ADDRESS=0.0.0.0:9999
+      - CHAINCODE_ID=${CC_PACKAGE_ID_MOROCCO}
+      - CORE_CHAINCODE_ID_NAME=${CC_PACKAGE_ID_MOROCCO}
+    ports:
+      - "9997:9999"

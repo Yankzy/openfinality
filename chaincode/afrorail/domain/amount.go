@@ -132,13 +132,17 @@ func (a Amount) Cmp(b Amount) (int, error) {
 
 // MarshalJSON implements the json.Marshaler interface for canonical serialization.
 func (a Amount) MarshalJSON() ([]byte, error) {
+	unitsStr := "0"
+	if a.Units != nil {
+		unitsStr = a.Units.String()
+	}
 	return json.Marshal(struct {
 		Currency string `json:"currency"`
 		Units    string `json:"units"`
 		Scale    uint32 `json:"scale"`
 	}{
 		Currency: a.Currency,
-		Units:    a.Units.String(),
+		Units:    unitsStr,
 		Scale:    a.Scale,
 	})
 }
