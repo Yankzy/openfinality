@@ -1,4 +1,7 @@
 # OpenFinality 🌍🚆
+
+![OpenFinality Logo](logo.png)
+
 **An open-source, permissioned, multi-institution settlement coordination network**
 
 [![Release](https://img.shields.io/badge/Release-v0.1.0%20Developer%20Preview-blue)](https://github.com/openfinality/openfinality/releases/tag/v0.1.0)
