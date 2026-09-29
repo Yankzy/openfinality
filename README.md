@@ -84,7 +84,7 @@ Experience the full OpenFinality lifecycle on your local machine, simulating 3 c
 
 ### Prerequisites
 - Docker & Docker Compose (`colima` recommended for macOS)
-- Go 1.22+
+- Go 1.26+
 - Make
 
 ### Quickstart
