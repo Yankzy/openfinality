@@ -1,13 +1,13 @@
 # OpenFinality 🌍🚆
 
-![OpenFinality Logo](logo.png)
+[![OpenFinality Logo](logo.png)](#)
 
 **An open-source, permissioned, multi-institution settlement coordination network**
 
 [![Release](https://img.shields.io/badge/Release-v0.1.0%20Developer%20Preview-blue)](https://github.com/openfinality/openfinality/releases/tag/v0.1.0)
 [![Hyperledger Fabric](https://img.shields.io/badge/Hyperledger%20Fabric-v3.1.5-2f3134)](https://github.com/hyperledger/fabric)
 [![SmartBFT](https://img.shields.io/badge/Consensus-SmartBFT-orange)](https://github.com/hyperledger-labs/SmartBFT)
-[![Go](https://img.shields.io/badge/Go-1.22+-00add8?logo=go)](https://golang.org/)
+[![Go](https://img.shields.io/badge/Go-1.26.0+-00add8?logo=go)](https://golang.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 OpenFinality provides a unified standard for verifiable, cross-border multi-currency settlement execution between financial institutions across countries. It guarantees cryptographic non-repudiation, strict authorization policies, and robust fault tolerance without relying on a centralized intermediary for state coordination.
