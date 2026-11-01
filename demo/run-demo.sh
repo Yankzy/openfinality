@@ -23,7 +23,7 @@ INTENT_ID="demo-intent-$(date +%s)"
 
 echo "Settlement Intent (Initiator: NigeriaOrg)"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents \
-  -H "X-AfroRail-Org: NigeriaMSP" \
+  -H "X-openfinality-Org: NigeriaMSP" \
   -H "Content-Type: application/json" \
   -d "{\"id\": \"$INTENT_ID\", \"counterparty_msp_id\": \"MoroccoMSP\"}")
 echo $RES
@@ -31,19 +31,19 @@ sleep 2
 
 echo "Counterparty (MoroccoOrg)"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents/$INTENT_ID/accept \
-  -H "X-AfroRail-Org: MoroccoMSP")
+  -H "X-openfinality-Org: MoroccoMSP")
 echo $RES
 sleep 2
 
 echo "Capacity (MoroccoOrg)"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents/$INTENT_ID/reservations \
-  -H "X-AfroRail-Org: MoroccoMSP")
+  -H "X-openfinality-Org: MoroccoMSP")
 echo $RES
 sleep 2
 
 echo "Settlement Instruction (NigeriaOrg)"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents/$INTENT_ID/execute \
-  -H "X-AfroRail-Org: NigeriaMSP")
+  -H "X-openfinality-Org: NigeriaMSP")
 echo $RES
 sleep 2
 
@@ -53,7 +53,7 @@ echo "✓ simulator completed"
 
 echo "Settlement Proof (Adapter)"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents/$INTENT_ID/proof \
-  -H "X-AfroRail-Org: Adapter")
+  -H "X-openfinality-Org: Adapter")
 echo $RES
 sleep 2
 

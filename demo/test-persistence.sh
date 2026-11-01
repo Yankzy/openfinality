@@ -10,34 +10,34 @@ sleep 5
 INTENT_ID="test-persistence-$(date +%s)"
 echo "1. Ghana creates intent claiming Ghana initiator"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents \
-  -H "X-AfroRail-Org: GhanaMSP" \
+  -H "X-openfinality-Org: GhanaMSP" \
   -H "Content-Type: application/json" \
   -d "{\"id\": \"$INTENT_ID\", \"counterparty_msp_id\": \"MoroccoMSP\"}")
 if ! echo $RES | grep -q "SUCCESS"; then echo "FAIL: Ghana create ($RES)"; exit 1; fi
 
 echo "2. Morocco accepts Ghana->Morocco intent"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents/$INTENT_ID/accept \
-  -H "X-AfroRail-Org: MoroccoMSP")
+  -H "X-openfinality-Org: MoroccoMSP")
 if ! echo $RES | grep -q "SUCCESS"; then echo "FAIL: Morocco accept failed ($RES)"; exit 1; fi
 
 echo "3. Ghana creates reservation"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents/$INTENT_ID/reservations \
-  -H "X-AfroRail-Org: GhanaMSP")
+  -H "X-openfinality-Org: GhanaMSP")
 if ! echo $RES | grep -q "SUCCESS"; then echo "FAIL: Ghana reserve failed ($RES)"; exit 1; fi
 
 echo "4. Ghana execute intent"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents/$INTENT_ID/execute \
-  -H "X-AfroRail-Org: GhanaMSP")
+  -H "X-openfinality-Org: GhanaMSP")
 if ! echo $RES | grep -q "SUCCESS"; then echo "FAIL: Ghana execute failed ($RES)"; exit 1; fi
 
 echo "5. Authorized settlement adapter confirms"
 RES=$(curl -s -X POST http://localhost:8080/v1/settlement-intents/$INTENT_ID/proof \
-  -H "X-AfroRail-Org: Adapter")
+  -H "X-openfinality-Org: Adapter")
 if ! echo $RES | grep -q "SUCCESS"; then echo "FAIL: Adapter confirm failed ($RES)"; exit 1; fi
 
 echo "Querying before restart:"
 QUERY_RES=$(curl -s -X GET http://localhost:8080/v1/settlement-intents/$INTENT_ID \
-  -H "X-AfroRail-Org: GhanaMSP")
+  -H "X-openfinality-Org: GhanaMSP")
 echo "Result before restart: $QUERY_RES"
 
 kill $GATEWAY_PID
@@ -60,7 +60,7 @@ sleep 15
 
 echo "Querying after restart:"
 QUERY_RES2=$(curl -s -X GET http://localhost:8080/v1/settlement-intents/$INTENT_ID \
-  -H "X-AfroRail-Org: GhanaMSP")
+  -H "X-openfinality-Org: GhanaMSP")
 echo "Result after restart: $QUERY_RES2"
 
 kill $GATEWAY_PID2

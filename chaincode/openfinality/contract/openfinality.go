@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/openfinality/openfinality/chaincode/afrorail/domain"
 	"github.com/hyperledger/fabric-chaincode-go/pkg/statebased"
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
+	"github.com/openfinality/openfinality/chaincode/openfinality/domain"
 )
 
 type SmartContract struct {
@@ -160,7 +160,7 @@ func (s *SmartContract) EndorseInstruction(ctx contractapi.TransactionContextInt
 	if err != nil {
 		return fmt.Errorf("failed to get client MSP: %v", err)
 	}
-	
+
 	// We can let either involved party endorse
 	intentBytes, err := ctx.GetStub().GetState("INTENT_" + intentID)
 	if err != nil {
@@ -184,9 +184,9 @@ func (s *SmartContract) EndorseInstruction(ctx contractapi.TransactionContextInt
 
 func (s *SmartContract) CommitSettlementProof(ctx contractapi.TransactionContextInterface, intentID string) error {
 	// Must be settlement adapter. For now, check if identity has "role=settlement-adapter" attribute.
-	// Or we can just check if clientMSP == "OrdererMSP" if adapter runs in that org, 
+	// Or we can just check if clientMSP == "OrdererMSP" if adapter runs in that org,
 	// but the prompt says: "Only an authorized settlement-adapter/service identity may record external settlement confirmation. Use a certificate attribute or explicitly registered participant role. For example: role=settlement-adapter"
-	
+
 	val, ok, err := ctx.GetClientIdentity().GetAttributeValue("role")
 	if err != nil {
 		return fmt.Errorf("failed to get client attributes: %v", err)

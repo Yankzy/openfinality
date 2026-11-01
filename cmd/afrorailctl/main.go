@@ -58,7 +58,7 @@ func main() {
 }
 
 func printUsage() {
-	fmt.Println("Usage: afrorailctl [--output json] <command> <subcommand>")
+	fmt.Println("Usage: openfinalityctl [--output json] <command> <subcommand>")
 	fmt.Println("\nCommands:")
 	fmt.Println("  network status")
 	fmt.Println("  participant list")

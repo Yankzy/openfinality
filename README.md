@@ -94,7 +94,6 @@ Experience the full OpenFinality lifecycle on your local machine, simulating 3 c
    ```bash
    make clean
    make bootstrap
-   make up
    make deploy-chaincode
    ```
 

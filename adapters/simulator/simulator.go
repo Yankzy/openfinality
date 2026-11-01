@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/openfinality/openfinality/chaincode/afrorail/domain"
+	"github.com/openfinality/openfinality/chaincode/openfinality/domain"
 	"github.com/openfinality/openfinality/internal/settlement"
 )
 
@@ -44,7 +44,7 @@ func NewSimulatorAdapter() *SimulatorAdapter {
 }
 
 func (s *SimulatorAdapter) Name() string {
-	return "AFRO_RAIL_DETERMINISTIC_SIMULATOR"
+	return "OPEN_FINALITY_DETERMINISTIC_SIMULATOR"
 }
 
 // SeedBalance adds an initial balance for a participant in the simulator.
@@ -131,14 +131,14 @@ func (s *SimulatorAdapter) Execute(ctx context.Context, instr settlement.Settlem
 
 	// Simplistic execution logic
 	// Find payer reservations or balances, credit payee
-	
+
 	// Ensure payee exists
 	if _, ok := s.balances[instr.PayeeInstitution]; !ok {
 		s.balances[instr.PayeeInstitution] = make(map[string]domain.Amount)
 	}
-	
+
 	payeeBalances := s.balances[instr.PayeeInstitution]
-	
+
 	currentPayeeBal, ok := payeeBalances[instr.Currency]
 	if !ok {
 		currentPayeeBal = domain.NewAmount(instr.Currency, 0, instr.Amount.Scale)

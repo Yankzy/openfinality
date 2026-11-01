@@ -81,7 +81,7 @@ func setupConnections() error {
 }
 
 func getConn(r *http.Request) (*FabricConnection, error) {
-	orgID := r.Header.Get("X-AfroRail-Org")
+	orgID := r.Header.Get("X-openfinality-Org")
 	if orgID == "" {
 		orgID = "NigeriaMSP" // default fallback for ease of testing
 	}
@@ -103,7 +103,7 @@ func main() {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("OK"))
 	})
-	
+
 	mux.HandleFunc("POST /v1/settlement-intents", createIntentHandler)
 	mux.HandleFunc("GET /v1/settlement-intents/{id}", getIntentHandler)
 	mux.HandleFunc("POST /v1/settlement-intents/{id}/accept", acceptIntentHandler)
@@ -125,7 +125,7 @@ func main() {
 func respondError(w http.ResponseWriter, err error, code int) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
-	
+
 	errCode := "ERR_UNKNOWN"
 	if strings.Contains(err.Error(), "ERR_") {
 		parts := strings.SplitN(err.Error(), ":", 2)
@@ -192,7 +192,7 @@ func getIntentHandler(w http.ResponseWriter, r *http.Request) {
 		respondError(w, err, http.StatusUnauthorized)
 		return
 	}
-	
+
 	id := r.PathValue("id")
 	result, err := conn.Contract.EvaluateTransaction("QueryIntent", id)
 	if err != nil {
@@ -211,7 +211,7 @@ func acceptIntentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	id := r.PathValue("id")
-	
+
 	_, commit, err := conn.Contract.SubmitAsync("AcceptSettlementIntent", client.WithArguments(id))
 	if err != nil {
 		respondError(w, err, http.StatusInternalServerError)
@@ -238,7 +238,7 @@ func reserveIntentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	id := r.PathValue("id")
-	
+
 	_, commit, err := conn.Contract.SubmitAsync("ReserveCapacity", client.WithArguments(id))
 	if err != nil {
 		respondError(w, err, http.StatusInternalServerError)
@@ -265,7 +265,7 @@ func executeIntentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	id := r.PathValue("id")
-	
+
 	_, commit, err := conn.Contract.SubmitAsync("EndorseInstruction", client.WithArguments(id))
 	if err != nil {
 		respondError(w, err, http.StatusInternalServerError)
@@ -292,7 +292,7 @@ func proofIntentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	id := r.PathValue("id")
-	
+
 	_, commit, err := conn.Contract.SubmitAsync("CommitSettlementProof", client.WithArguments(id))
 	if err != nil {
 		respondError(w, err, http.StatusInternalServerError)

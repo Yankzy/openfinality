@@ -1,8 +1,6 @@
-version: '3.7'
-
 networks:
-  afro_network:
-    name: afro_network
+  openfinality_network:
+    name: openfinality_network
 
 services:
   # Orderers
@@ -38,7 +36,7 @@ services:
       - ../organizations/orderer/orderers/orderer1/tls:/var/hyperledger/orderer/tls
       - orderer1_data:/var/hyperledger/production/orderer
     networks:
-      - afro_network
+      - openfinality_network
 
   orderer2.ordererorg.openfinality.com:
     container_name: orderer2.ordererorg.openfinality.com
@@ -72,7 +70,7 @@ services:
       - ../organizations/orderer/orderers/orderer2/tls:/var/hyperledger/orderer/tls
       - orderer2_data:/var/hyperledger/production/orderer
     networks:
-      - afro_network
+      - openfinality_network
 
   orderer3.ordererorg.openfinality.com:
     container_name: orderer3.ordererorg.openfinality.com
@@ -106,7 +104,7 @@ services:
       - ../organizations/orderer/orderers/orderer3/tls:/var/hyperledger/orderer/tls
       - orderer3_data:/var/hyperledger/production/orderer
     networks:
-      - afro_network
+      - openfinality_network
 
   orderer4.ordererorg.openfinality.com:
     container_name: orderer4.ordererorg.openfinality.com
@@ -140,7 +138,7 @@ services:
       - ../organizations/orderer/orderers/orderer4/tls:/var/hyperledger/orderer/tls
       - orderer4_data:/var/hyperledger/production/orderer
     networks:
-      - afro_network
+      - openfinality_network
 
   # Peers
   peer0.nigeriaorg.openfinality.com:
@@ -149,7 +147,7 @@ services:
     image: hyperledger/fabric-peer:3.1.5
     environment:
       - CORE_VM_ENDPOINT=unix:///var/run/docker.sock
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=afro_network
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=openfinality_network
       - FABRIC_LOGGING_SPEC=DEBUG
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_PROFILE_ENABLED=true
@@ -179,7 +177,7 @@ services:
       - ../organizations:/etc/hyperledger/fabric/organizations
       - peer0_nigeria_data:/var/hyperledger/production
     networks:
-      - afro_network
+      - openfinality_network
 
   peer0.ghanaorg.openfinality.com:
     container_name: peer0.ghanaorg.openfinality.com
@@ -187,7 +185,7 @@ services:
     image: hyperledger/fabric-peer:3.1.5
     environment:
       - CORE_VM_ENDPOINT=unix:///var/run/docker.sock
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=afro_network
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=openfinality_network
       - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_PROFILE_ENABLED=true
@@ -217,7 +215,7 @@ services:
       - ../organizations:/etc/hyperledger/fabric/organizations
       - peer0_ghana_data:/var/hyperledger/production
     networks:
-      - afro_network
+      - openfinality_network
 
   peer0.moroccoorg.openfinality.com:
     container_name: peer0.moroccoorg.openfinality.com
@@ -225,7 +223,7 @@ services:
     image: hyperledger/fabric-peer:3.1.5
     environment:
       - CORE_VM_ENDPOINT=unix:///var/run/docker.sock
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=afro_network
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=openfinality_network
       - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_PROFILE_ENABLED=true
@@ -255,7 +253,7 @@ services:
       - ../organizations:/etc/hyperledger/fabric/organizations
       - peer0_morocco_data:/var/hyperledger/production
     networks:
-      - afro_network
+      - openfinality_network
 
 volumes:
   orderer1_data:

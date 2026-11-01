@@ -1,8 +1,6 @@
-version: '3.7'
-
 networks:
-  afro_network:
-    name: afro_network
+  openfinality_network:
+    name: openfinality_network
 
 services:
   # CAs
@@ -19,7 +17,7 @@ services:
     volumes:
       - ../organizations/fabric-ca/nigeria:/etc/hyperledger/fabric-ca-server
     networks:
-      - afro_network
+      - openfinality_network
 
   ca_ghana:
     image: hyperledger/fabric-ca:1.5.7
@@ -34,7 +32,7 @@ services:
     volumes:
       - ../organizations/fabric-ca/ghana:/etc/hyperledger/fabric-ca-server
     networks:
-      - afro_network
+      - openfinality_network
 
   ca_morocco:
     image: hyperledger/fabric-ca:1.5.7
@@ -49,7 +47,7 @@ services:
     volumes:
       - ../organizations/fabric-ca/morocco:/etc/hyperledger/fabric-ca-server
     networks:
-      - afro_network
+      - openfinality_network
 
   ca_orderer:
     image: hyperledger/fabric-ca:1.5.7
@@ -64,7 +62,7 @@ services:
     volumes:
       - ../organizations/fabric-ca/orderer:/etc/hyperledger/fabric-ca-server
     networks:
-      - afro_network
+      - openfinality_network
 
   # CouchDBs
   couchdb_nigeria:
@@ -75,7 +73,7 @@ services:
     ports:
       - "5984:5984"
     networks:
-      - afro_network
+      - openfinality_network
 
   couchdb_ghana:
     image: couchdb:3.3.3
@@ -85,7 +83,7 @@ services:
     ports:
       - "6984:5984"
     networks:
-      - afro_network
+      - openfinality_network
 
   couchdb_morocco:
     image: couchdb:3.3.3
@@ -95,4 +93,4 @@ services:
     ports:
       - "7984:5984"
     networks:
-      - afro_network
+      - openfinality_network

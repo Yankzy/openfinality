@@ -1,2 +1,3 @@
 Installed chaincodes on peer:
-Package ID: afrorail_1.0:b5aafe447292714910d4972adb354cbfeba2f75628ae3fd2db5a15185cafb244, Label: afrorail_1.0
+Package ID: openfinality_1.0:a01f2416759092f2b3c37e84efe57dfeca221c94cd22a1791c44a4423b70035c, Label: openfinality_1.0
+Package ID: openfinality_1.0:bf460ad2eb5aaa11bf220b5af0108e68eb188310530733bc3356b8070e1d97d7, Label: openfinality_1.0

@@ -21,7 +21,7 @@ build:
 	@mkdir -p bin
 	@go build -o bin/gateway ./cmd/gateway
 	@go build -o bin/settlement-simulator ./cmd/settlement-simulator
-	@go build -o bin/afrorailctl ./cmd/afrorailctl
+	@go build -o bin/openfinalityctl ./cmd/afrorailctl
 
 lint:
 	@echo "Linting Go code..."
@@ -30,12 +30,12 @@ lint:
 test:
 	@echo "Running unit tests..."
 	@go test ./...
-	@cd chaincode/afrorail && go test ./...
+	@cd chaincode/openfinality && go test ./...
 
 test-race:
 	@echo "Running tests with race detector..."
 	@go test -race ./...
-	@cd chaincode/afrorail && go test -race ./...
+	@cd chaincode/openfinality && go test -race ./...
 
 test-integration:
 	@echo "Running integration tests..."

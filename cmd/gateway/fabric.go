@@ -123,8 +123,8 @@ func InitFabricConnection(mspID, peerEndpoint, tlsCertPath, certPath, keystoreDi
 		return nil, nil, err
 	}
 
-	network := gateway.GetNetwork("afro-settlement")
-	contract := network.GetContract("afrorail")
+	network := gateway.GetNetwork("openfinality-settlement")
+	contract := network.GetContract("openfinality")
 
 	return &FabricConnection{
 		Gateway:  gateway,

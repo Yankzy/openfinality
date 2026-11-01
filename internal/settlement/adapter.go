@@ -3,7 +3,7 @@ package settlement
 import (
 	"context"
 
-	"github.com/openfinality/openfinality/chaincode/afrorail/domain"
+	"github.com/openfinality/openfinality/chaincode/openfinality/domain"
 )
 
 type ReserveRequest struct {
@@ -32,10 +32,10 @@ type SettlementInstruction struct {
 }
 
 type ExecutionResult struct {
-	Success            bool
-	ExternalID         string
-	Status             domain.SettlementStatus
-	ErrorMsg           string
+	Success    bool
+	ExternalID string
+	Status     domain.SettlementStatus
+	ErrorMsg   string
 }
 
 // SettlementAdapter defines the interface for external settlement coordination.

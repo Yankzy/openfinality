@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
-	"github.com/openfinality/openfinality/chaincode/afrorail/contract"
+	"github.com/openfinality/openfinality/chaincode/openfinality/contract"
 )
 
 func main() {

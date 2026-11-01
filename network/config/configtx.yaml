@@ -179,7 +179,7 @@ Channel: &ChannelDefaults
     <<: *ChannelCapabilities
 
 Profiles:
-  AfroSettlementChannel:
+  OpenFinalitySettlementChannel:
     Consortium: SampleConsortium
     <<: *ChannelDefaults
     Orderer:
